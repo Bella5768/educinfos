@@ -8,3 +8,4 @@ djangocms-admin-style>=3.0
 django-filebrowser-no-grappelli>=3.0
 django-sekizai>=0.10
 Pillow>=10.0
+packaging>=21.0
