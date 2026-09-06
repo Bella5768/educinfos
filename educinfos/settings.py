@@ -20,13 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
     'articles',
-    'cms',
-    'menus',
-    'treebeard',
-    'sekizai',
-    'djangocms_admin_style',
 ]
 
 MIDDLEWARE = [
@@ -37,11 +31,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'cms.middleware.utils.ApphookReloadMiddleware',
-    'cms.middleware.user.CurrentUserMiddleware',
-    'cms.middleware.page.CurrentPageMiddleware',
-    'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.language.LanguageCookieMiddleware',
 ]
 
 ROOT_URLCONF = 'educinfos.urls'
@@ -57,22 +46,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'sekizai.context_processors.sekizai',
-                'django.template.context_processors.request',
             ],
         },
     },
 ]
-
-CMS_TEMPLATES = [
-    ('home.html', 'Home Page'),
-]
-
-LANGUAGES = [
-    ('fr', 'Français'),
-]
-
-SITE_ID = 1
 
 WSGI_APPLICATION = 'educinfos.wsgi.application'
 
@@ -98,7 +75,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'fr'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'Africa/Conakry'
 
