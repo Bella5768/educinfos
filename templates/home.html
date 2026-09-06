@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="accueil" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h2 class="hero-title">Informer, Expliquer, <span class="highlight">Valoriser</span></h2>
+            <p class="hero-description">
+                Educ Infos 224 est votre plateforme d'information spécialisée dans l'actualité de l'éducation en Guinée. 
+                Nous couvrons les réformes, les innovations et les initiatives qui contribuent à bâtir un système éducatif plus performant.
+            </p>
+            <div class="hero-buttons">
+                <a href="#articles" class="btn btn-primary btn-large">Découvrir nos articles</a>
+                <a href="#apropos" class="btn btn-outline btn-large">En savoir plus</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon icon-blue">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <h3>Actualités Éducation</h3>
+                <p>Articles d'actualité sur les réformes du MENA-ETFP et les innovations pédagogiques</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon icon-green">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Interviews</h3>
+                <p>Entretiens avec les acteurs du système éducatif : enseignants, élèves, responsables</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon icon-purple">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Résultats & Statistiques</h3>
+                <p>Résultats d'examens, calendrier scolaire et analyses de données éducatives</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Articles Section -->
+<section id="articles" class="articles">
+    <div class="container">
+        <div class="section-header">
+            <h2>Derniers Articles</h2>
+            <p>Restez informé des dernières nouvelles de l'éducation guinéenne</p>
+        </div>
+        <div class="articles-grid">
+            {% if articles %}
+                {% for article in articles %}
+                <article class="article-card">
+                    <div class="article-image">
+                        {% if article.image_url %}
+                            <img src="{{ article.image_url }}" alt="{{ article.title }}">
+                        {% else %}
+                            <div class="article-placeholder">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">
+                                <i class="fas fa-calendar"></i>
+                                {{ article.published_date|date:"d F Y" }}
+                            </span>
+                            <span class="article-category">{{ article.get_category_display }}</span>
+                        </div>
+                        <h3>{{ article.title }}</h3>
+                        <p>{{ article.excerpt }}</p>
+                        <a href="{% url 'article_detail' article.slug %}" class="btn btn-outline">Lire l'article</a>
+                    </div>
+                </article>
+                {% endfor %}
+            {% else %}
+                <div class="no-articles">
+                    <p>Aucun article publié pour le moment.</p>
+                </div>
+            {% endif %}
+        </div>
+        <div class="section-footer">
+            <a href="{% url 'articles_list' %}" class="btn btn-primary btn-large">Voir tous les articles</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="apropos" class="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="section-header">
+                <h2>À propos de Educ.Infos224</h2>
+            </div>
+            <div class="about-card">
+                <p class="about-text">
+                    Educ Infos 224 couvre l'actualité du système éducatif guinéen : réformes du MENA-ETFP, résultats d'examens, 
+                    innovations pédagogiques, initiatives locales et internationales en faveur de l'éducation.
+                </p>
+                <p class="about-text">
+                    Notre mission : rendre l'info accessible à tous — élèves, parents, enseignants et décideurs.
+                </p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="about-feature-icon icon-blue">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h4>Contenu Pédagogique</h4>
+                        <p>Articles informatifs et explicatifs</p>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon icon-green">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Public Diversifié</h4>
+                        <p>Élèves, parents, enseignants, décideurs</p>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon icon-purple">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Valorisation</h4>
+                        <p>Mise en avant des initiatives positives</p>
+                    </div>
+                    <div class="about-feature">
+                        <div class="about-feature-icon icon-orange">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h4>Actualité en Continu</h4>
+                        <p>Couverture complète de l'actualité</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>Contactez-nous</h2>
+                <p>Une question ? Une suggestion ? N'hésitez pas à nous contacter.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>contact@educinfos224.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Téléphone</h4>
+                            <p>+224 XX XX XX XX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Site Web</h4>
+                            <p>www.educinfos224.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links-large">
+                    <a href="https://facebook.com/EducInfos224" target="_blank" class="social-link facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://twitter.com/EducInfos224" target="_blank" class="social-link twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com/EducInfos224" target="_blank" class="social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

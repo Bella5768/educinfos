@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="articles-list-section">
+    <div class="container">
+        <div class="section-header">
+            <h1>Tous les Articles</h1>
+            {% if category_filter %}
+                <p>Catégorie : {{ category_filter|title }}</p>
+            {% else %}
+                <p>Explorez tous nos articles sur l'éducation en Guinée</p>
+            {% endif %}
+        </div>
+        
+        <div class="category-filter">
+            <a href="{% url 'articles_list' %}" class="filter-btn {% if not category_filter %}active{% endif %}">Tous</a>
+            <a href="?category=reforme" class="filter-btn {% if category_filter == 'reforme' %}active{% endif %}">Réformes</a>
+            <a href="?category=innovation" class="filter-btn {% if category_filter == 'innovation' %}active{% endif %}">Innovations</a>
+            <a href="?category=initiative" class="filter-btn {% if category_filter == 'initiative' %}active{% endif %}">Initiatives</a>
+            <a href="?category=resultat" class="filter-btn {% if category_filter == 'resultat' %}active{% endif %}">Résultats</a>
+            <a href="?category=interview" class="filter-btn {% if category_filter == 'interview' %}active{% endif %}">Interviews</a>
+            <a href="?category=conseil" class="filter-btn {% if category_filter == 'conseil' %}active{% endif %}">Conseils</a>
+        </div>
+
+        <div class="articles-grid">
+            {% for article in articles %}
+            <article class="article-card">
+                <div class="article-image">
+                    {% if article.image_url %}
+                        <img src="{{ article.image_url }}" alt="{{ article.title }}">
+                    {% else %}
+                        <div class="article-placeholder">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-date">
+                            <i class="fas fa-calendar"></i>
+                            {{ article.published_date|date:"d F Y" }}
+                        </span>
+                        <span class="article-category">{{ article.get_category_display }}</span>
+                    </div>
+                    <h3>{{ article.title }}</h3>
+                    <p>{{ article.excerpt }}</p>
+                    <a href="{% url 'article_detail' article.slug %}" class="btn btn-outline">Lire l'article</a>
+                </div>
+            </article>
+            {% empty %}
+            <div class="no-articles">
+                <p>Aucun article trouvé pour cette catégorie.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

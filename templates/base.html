@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Educ Infos 224 est une plateforme d'information spécialisée dans l'actualité de l'éducation en Guinée.">
+    <title>Educ.Infos224 - L'actualité de l'éducation en Guinée</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Educ.Infos224</h1>
+                        <p>L'actualité de l'éducation en Guinée</p>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <a href="#accueil" class="nav-link">Accueil</a>
+                    <a href="#articles" class="nav-link">Articles</a>
+                    <a href="#apropos" class="nav-link">À propos</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+                <button class="btn btn-primary">S'abonner</button>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Educ.Infos224</h3>
+                    </div>
+                    <p>Votre plateforme d'information sur l'éducation en Guinée</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#articles">Articles</a></li>
+                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@educinfos224.com</li>
+                        <li><i class="fas fa-phone"></i> +224 XX XX XX XX</li>
+                        <li><i class="fas fa-globe"></i> www.educinfos224.com</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="https://facebook.com/EducInfos224" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/EducInfos224" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/EducInfos224" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Educ.Infos224. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
