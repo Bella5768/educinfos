@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backoffice - Educ.Infos224</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: #f5f5f5;
+        }
+        .backoffice-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .backoffice-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .backoffice-header h1 {
+            margin: 0 0 0.5rem 0;
+            color: var(--primary-color);
+        }
+        .backoffice-header p {
+            margin: 0;
+            color: var(--text-light);
+        }
+        .backoffice-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .backoffice-table {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .backoffice-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .backoffice-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        .backoffice-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .backoffice-table tr:hover {
+            background: #f9f9f9;
+        }
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+        .status-published {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status-draft {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-right: 0.5rem;
+            font-size: 0.875rem;
+        }
+        .btn-edit {
+            background: var(--primary-color);
+            color: white;
+        }
+        .btn-delete {
+            background: #dc2626;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="backoffice-container">
+        <div class="backoffice-header">
+            <h1>🔧 Backoffice - Gestion des articles</h1>
+            <p>Ajoutez, modifiez ou supprimez des articles</p>
+            <div class="backoffice-actions">
+                <a href="{% url 'backoffice_add' %}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Ajouter un article
+                </a>
+                <a href="{% url 'home' %}" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Retour au site
+                </a>
+                <a href="/admin/logout/" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                </a>
+            </div>
+        </div>
+        
+        <div class="backoffice-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Catégorie</th>
+                        <th>Statut</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                    <tr>
+                        <td>{{ article.title }}</td>
+                        <td>{{ article.get_category_display }}</td>
+                        <td>
+                            <span class="status-badge {% if article.status == 'published' %}status-published{% else %}status-draft{% endif %}">
+                                {{ article.get_status_display }}
+                            </span>
+                        </td>
+                        <td>{{ article.published_date|date:"d/m/Y" }}</td>
+                        <td>
+                            <a href="{% url 'backoffice_edit' article.slug %}" class="action-btn btn-edit">
+                                <i class="fas fa-edit"></i> Modifier
+                            </a>
+                            <a href="{% url 'backoffice_delete' article.slug %}" class="action-btn btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">
+                                <i class="fas fa-trash"></i> Supprimer
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-light);">
+                            Aucun article pour le moment.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
