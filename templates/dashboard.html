@@ -4,15 +4,9 @@
 <div class="container" style="padding: 2rem 0;">
     <div class="section-header">
         <h2>Gestion du site</h2>
-        <p>Ajoutez, modifiez ou supprimez des articles</p>
+        <p>Modifiez ou supprimez des articles</p>
     </div>
     {% csrf_token %}
-    
-    <div style="margin-bottom: 2rem;">
-        <a href="{% url 'article_create' %}" class="btn btn-primary btn-large">
-            <i class="fas fa-plus"></i> Ajouter un article
-        </a>
-    </div>
     
     <div style="background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden;">
         <table style="width: 100%; border-collapse: collapse;">
