@@ -1,3 +1,10 @@
 Django>=4.2.0
 gunicorn
 python-dotenv
+django-cms>=4.0
+django-treebeard>=4.5
+django-classy-tags>=0.9
+djangocms-admin-style>=3.0
+django-filebrowser-no-grappelli>=3.0
+django-sekizai>=0.10
+Pillow>=10.0

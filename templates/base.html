@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Educ Infos 224 est une plateforme d'information spécialisée dans l'actualité de l'éducation en Guinée.">
     <title>Educ.Infos224 - L'actualité de l'éducation en Guinée</title>
+    {% load sekizai_tags %}
+    {% render_block "css" %}
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -84,6 +86,7 @@
         </div>
     </footer>
 
+    {% render_block "js" %}
     <script src="/static/js/main.js"></script>
 </body>
 </html>

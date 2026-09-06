@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
+{% load cms_tags %}
 
 {% block content %}
 <!-- Hero Section -->
 <section id="accueil" class="hero">
     <div class="container">
         <div class="hero-content">
-            <h2 class="hero-title">Informer, Expliquer, <span class="highlight">Valoriser</span></h2>
-            <p class="hero-description">
-                Educ Infos 224 est votre plateforme d'information spécialisée dans l'actualité de l'éducation en Guinée. 
-                Nous couvrons les réformes, les innovations et les initiatives qui contribuent à bâtir un système éducatif plus performant.
-            </p>
+            {% placeholder "hero_title" %}
+                <h2 class="hero-title">Informer, Expliquer, <span class="highlight">Valoriser</span></h2>
+            {% endplaceholder %}
+            {% placeholder "hero_description" %}
+                <p class="hero-description">
+                    Educ Infos 224 est votre plateforme d'information spécialisée dans l'actualité de l'éducation en Guinée.
+                    Nous couvrons les réformes, les innovations et les initiatives qui contribuent à bâtir un système éducatif plus performant.
+                </p>
+            {% endplaceholder %}
             <div class="hero-buttons">
                 <a href="#articles" class="btn btn-primary btn-large">Découvrir nos articles</a>
                 <a href="#apropos" class="btn btn-outline btn-large">En savoir plus</a>
