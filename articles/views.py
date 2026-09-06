@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from .models import Article
 
 
@@ -34,6 +35,7 @@ def articles_list(request):
     return render(request, 'articles_list.html', context)
 
 
+@login_required
 def dashboard(request):
     articles = Article.objects.all().order_by('-published_date')
     context = {
@@ -42,6 +44,7 @@ def dashboard(request):
     return render(request, 'dashboard.html', context)
 
 
+@login_required
 def article_create(request):
     if request.method == 'POST':
         title = request.POST.get('title')
@@ -68,6 +71,7 @@ def article_create(request):
     return render(request, 'article_form.html')
 
 
+@login_required
 def article_edit(request, slug):
     article = get_object_or_404(Article, slug=slug)
     
@@ -89,6 +93,7 @@ def article_edit(request, slug):
     return render(request, 'article_form.html', context)
 
 
+@login_required
 def article_delete(request, slug):
     article = get_object_or_404(Article, slug=slug)
     article.delete()

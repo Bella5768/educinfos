@@ -13,6 +13,9 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,educinfos.pythonanywhere.com').split(',')
 
+LOGIN_URL = '/admin/login/'
+LOGIN_REDIRECT_URL = '/gestion/'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
